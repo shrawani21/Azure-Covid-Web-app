@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Covid-19</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body>
+  <div style="background-color: black; height: 60px;">
+    
+    <h1 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;margin: auto;text-align: center;
+    vertical-align: middle;
+    line-height: 60px;"> COVID Overall</h1>
+    <h6>{by Ranveerkar Shreyas Suresh}</h6>
+  </div>
+  
+ <div class="login" >
+	<h3 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" >COVID Predictor</h3>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+      <input type="text" name="cough" placeholder="Do you have Cough? (1/0)" required="required" /><br>
+    	<input type="text" name="fever" placeholder="Do you have Fever? (1/0)" required="required" /><br>
+        <input type="text" name="sore_throat" placeholder="Do you have Sore Throat? (1/0)" required="required" /><br>
+        <input type="text" name="shortness_of_breath" placeholder="Do you have Shortness of Breath? (1/0)" required="required" /><br>
+        <input type="text" name="head_ache" placeholder="Do you have Headache? (1/0)" required="required" /><br>
+        <input type="text" name="age_60_and_above" placeholder="Are you 60 or above 60 (age)? (1/0)" required="required" /><br>
+        <input type="text" name="test_indication_Abroad" placeholder="Did you travelled from Abroad? (1/0)" required="required" /><br>
+        <input type="text" name="test_indication_Contact_with Confirmed" placeholder="Did you have direct Contact with Confirmed positive patient? (1/0)" required="required" /><br>
+        <input type="text" name="test_indication_Other" placeholder="Any other reason? (1/0)" required="required" /><br>
+        
+
+
+       
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   <br>
+ 
+
+ </div>
+ 
+ <div>{{prediction_text}}</div>
+ 
+
+ <div id="chatbot" style="float: right;position: relative;"> 
+   <h3 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">COVID FAQs Assistent</h3>
+   <iframe src='https://webchat.botframework.com/embed/Covid19_FAQ_Assistent?s=T79z05Fykgk.fQURbQHafQvRR-VyPcFBcxyVT3Pdr0sXJgXlGCgS2yw'  
+    style='width: 400px; height: 500px;  background-color: black;  '>
+   </iframe>
+ </div>
+
+ <div id="embedContainer" style="float: left; position: relative; width: 500px; height: 500px;"> 
+  <h3 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">COVID Report</h3>
+  <iframe title="Covid Cases report 2 - Page 1" width="500" height="380" src="https://app.powerbi.com/reportEmbed?reportId=7f850542-9e46-4f88-983c-acf590835b99&autoAuth=true&ctid=71dbb522-5704-4537-9f25-6ad2dcd4278d&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D" frameborder="0" allowFullScreen="false"></iframe>
+ </div>
+ 
+</body>
+</html>
